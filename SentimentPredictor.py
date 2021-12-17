@@ -14,13 +14,12 @@ class SentimentPredictor:
     def __init__(self):
         self.featurizer = Featurizer()
         self.model = None
-        pass
     
     def fit(self, X_train, y_train):
         '''
         INPUTS
-        X_train: list of movie reviews
-        y_train: list of labeled reviews with 1 for positives and 0 otherwise'''
+        X_train: list of movie reviews in string format
+        y_train: list of labeled reviews with 1 for positives and 0 for negatives'''
         
         X_train = [preprocess(text) for text in X_train]
         
@@ -59,6 +58,12 @@ class SentimentPredictor:
         self.model.save(savename)
     
     def load(self, savename = 'SentimentPredictor'):
-        self.featurizer.load(savename + '-tokenizer.pickle')
-        self.model = keras.models.load_model(savename)
+        token_save = savename + '-tokenizer.pickle'
+        if os.path.isfile(token_save) and os.path.isfile(savename):
+            self.featurizer.load(token_save)
+            self.model = keras.models.load_model(savename)
+            return 'OK'
+        else:
+            print('Model not found, need to train it first')
+            return 'FAIL'
 
