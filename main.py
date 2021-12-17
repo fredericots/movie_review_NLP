@@ -1,11 +1,11 @@
 import argparse
-from MReviews_Model import MReviews_Model
+from SentimentPredictor import SentimentPredictor
 import numpy as np
 
 def test():
 
-    model = MReviews_Model()
-    model.load('tests/MReviews_model')
+    model = SentimentPredictor()
+    model.load('tests/SentimentPredictor')
     X_test = np.load('tests/X_test.npy', allow_pickle = True)
     y_test_pred = np.load('tests/y_test_pred.npy', allow_pickle = True)
     pred = model.predict(X_test)
@@ -17,7 +17,7 @@ def test():
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='')
-    parser.add_argument('--test', action = 'count', help='run test to check installation')
+    parser.add_argument('--test', action = 'count', help='Run test to check installation')
     args = vars(parser.parse_args())
     if args['test'] != None:
         test()

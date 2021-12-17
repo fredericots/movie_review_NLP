@@ -10,7 +10,7 @@ EMBEDDED_DIM = 50
 BATCH_SIZE = 50
 TRAINING_EPOCHS = 3
 
-class MReviews_Model:
+class SentimentPredictor:
     def __init__(self):
         self.featurizer = Featurizer()
         self.model = None
@@ -54,11 +54,11 @@ class MReviews_Model:
         model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
         return model
 
-    def save(self, savename = 'MReviews_model'):
+    def save(self, savename = 'SentimentPredictor'):
         self.featurizer.save(savename + '-tokenizer.pickle')
         self.model.save(savename)
     
-    def load(self, savename = 'MReviews_model'):
+    def load(self, savename = 'SentimentPredictor'):
         self.featurizer.load(savename + '-tokenizer.pickle')
         self.model = keras.models.load_model(savename)
 

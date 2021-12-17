@@ -9,30 +9,34 @@ DATA_TRAIN_NEG_PATH = DATA_IMDB_PATH + "train/neg/*"
 DATA_TEST_POS_PATH = DATA_IMDB_PATH + "test/pos/*"
 DATA_TEST_NEG_PATH = DATA_IMDB_PATH + "test/neg/*"
 
-def read_train_data():
-    data = []
+def read_aclImdb(mode = 'train'):
+
+
+    if mode == 'train':
+        path_pos = DATA_TRAIN_POS_PATH
+        path_neg = DATA_TRAIN_NEG_PATH
+    elif mode == 'test':
+        path_pos = DATA_TEST_POS_PATH
+        path_neg = DATA_TEST_NEG_PATH
+    else:
+        raise Exception("mode " + str(mode) + "not supported")
+    
+    return read_aclImdb_folders(path_pos, path_neg)
+    
+def read_aclImdb_folders(path_pos, path_neg):   
+
+    text = []
+    target = []
     print('Positive data collection progress')
-    for file in tqdm.tqdm(glob.glob(DATA_TRAIN_POS_PATH)):
-        text = open(file, encoding="utf8").read()
-        data.append([text, 'pos'])
+    for file in tqdm.tqdm(glob.glob(path_pos)):
+        t = open(file, encoding="utf8").read()
+        text.append(t)
+        target.append(1)
 
     print('Negative data collection progress')        
-    for file in tqdm.tqdm(glob.glob(DATA_TRAIN_NEG_PATH)):
-        text = open(file, encoding="utf8").read()
-        data.append([text, 'neg'])
-    
-    return pd.DataFrame(data, columns = ['movie_review', 'label'])
+    for file in tqdm.tqdm(glob.glob(path_neg)):
+        t = open(file, encoding="utf8").read()
+        text.append(t)
+        target.append(0)
 
-def read_test_data():
-    data = []
-    print('Positive data collection progress')
-    for file in tqdm.tqdm(glob.glob(DATA_TEST_POS_PATH)):
-        text = open(file, encoding="utf8").read()
-        data.append([text, 'pos'])
-
-    print('Negative data collection progress')        
-    for file in tqdm.tqdm(glob.glob(DATA_TEST_NEG_PATH)):
-        text = open(file, encoding="utf8").read()
-        data.append([text, 'neg'])
-    
-    return pd.DataFrame(data, columns = ['movie_reviews', 'label'])
+    return text, target    
