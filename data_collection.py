@@ -2,7 +2,7 @@ import glob
 import tqdm
 import pandas as pd
 
-DATA_IMDB_PATH = "../aclImdb/"
+DATA_IMDB_PATH = "aclImdb/"
 
 DATA_TRAIN_POS_PATH = DATA_IMDB_PATH + "train/pos/*"
 DATA_TRAIN_NEG_PATH = DATA_IMDB_PATH + "train/neg/*"

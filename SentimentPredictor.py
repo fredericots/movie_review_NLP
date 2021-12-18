@@ -1,4 +1,5 @@
 import os
+import numpy as np
 import keras
 
 from preprocess import preprocess
@@ -25,6 +26,7 @@ class SentimentPredictor:
         
         self.featurizer.fit(X_train)
         X_train = self.featurizer.apply(X_train)
+        y_train = np.array(y_train)
         
         self.model = self.model_architecture()
         self.model.fit(X_train, y_train,
@@ -59,11 +61,11 @@ class SentimentPredictor:
     
     def load(self, savename = 'SentimentPredictor'):
         token_save = savename + '-tokenizer.pickle'
-        if os.path.isfile(token_save) and os.path.isfile(savename):
+        try:
             self.featurizer.load(token_save)
             self.model = keras.models.load_model(savename)
             return 'OK'
-        else:
+        except:
             print('Model not found, need to train it first')
             return 'FAIL'
 

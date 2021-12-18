@@ -38,3 +38,21 @@ DATA_IMDB_PATH = "../aclImdb/"
 ## Experiments
 
 All developed models and tests are present in the experiments.ipynb notebook.
+
+
+## Libraries used
+
+All of them are included in requirements.txt:
+
+nltk
+tensorflow
+pandas
+jupyter
+numpy
+keras
+scikit-learn
+pickle
+
+
+
+

@@ -1,4 +1,5 @@
 import pickle
+import numpy as np
 from keras import preprocessing
 
 VOCAB_SIZE = 2000
@@ -20,7 +21,7 @@ class Featurizer:
         feat_data = self.tokenizer.texts_to_sequences(data)
         feat_data = preprocessing.sequence.pad_sequences(feat_data, maxlen=SENTENCE_MAX_SIZE, dtype='int32', 
                                                         padding='post', truncating='post', value=0)
-        return feat_data        
+        return np.array(feat_data) 
         
     def save(self, tokenizer_path = 'tokenizer.pickle'):
         with open(tokenizer_path, 'wb') as handle:
