@@ -6,6 +6,8 @@ from sklearn import metrics
 from data_collection import read_aclImdb
 from SentimentPredictor import SentimentPredictor
 
+# MAIN FUNCTION THAT CALLS ALL OTHERS
+
 def test():
 
     model = SentimentPredictor()

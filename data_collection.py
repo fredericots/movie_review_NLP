@@ -10,7 +10,8 @@ DATA_TEST_POS_PATH = DATA_IMDB_PATH + "test/pos/*"
 DATA_TEST_NEG_PATH = DATA_IMDB_PATH + "test/neg/*"
 
 def read_aclImdb(mode = 'train'):
-
+    '''Function to read data in Large Movie Review Dataset v1.0 format.
+       For more information see http://ai.stanford.edu/~amaas/data/sentiment/.'''
 
     if mode == 'train':
         path_pos = DATA_TRAIN_POS_PATH

@@ -13,6 +13,9 @@ TRAINING_EPOCHS = 3
 
 class SentimentPredictor:
     def __init__(self):
+        '''Class to predict whether a movie review is positive or negative.
+           It is necessary to train a model first (.fit option) and then apply it to new samples.'''
+    
         self.featurizer = Featurizer()
         self.model = None
     

@@ -9,6 +9,8 @@ STOP_WORDS = stopwords.words('english')
 #SPELLER = Speller('en')
 
 def preprocess(text):
+    '''Process and clean a text to become easier to be trained by machine learning models'''
+
     text = text.lower()
     text = ''.join(c for c in text if c not in punctuation)
     text = ''.join(c for c in text if not c.isdigit())

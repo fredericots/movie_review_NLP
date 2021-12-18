@@ -8,6 +8,9 @@ SENTENCE_MAX_SIZE = 1000
 class Featurizer:
     
     def __init__(self):
+        '''Class to transform a list of movie reviews into features for the machine learning model.
+           You need to fit the featurizer on train data and apply next to all X lists'''
+           
         self.tokenizer = preprocessing.text.Tokenizer(
             num_words=VOCAB_SIZE,
             filters='!"#$%&()*+,-./:;<=>?@[\\]^_`{|}~\t\n',
