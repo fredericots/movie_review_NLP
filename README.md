@@ -18,7 +18,7 @@ Here we have:
   **-h, --help**:         show this help message and exit  
   **--test**:             Run test to check installation  
   **--aclImdb_train**:    Train a model using aclImdb data - see data_collection.py for details  
-  **--aclImdb_eval**:     Evaluation results with the trained model and aclImdb test data.
+  **--aclImdb_eval**:     Evaluation results with the trained model and aclImdb test data.  
   **--predict PREDICT**:  Predict if a text in english is a positive review or a negative one. Needs the .txt path with the text to be predicted  
 
 ## About the reference data
