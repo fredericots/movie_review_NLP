@@ -34,7 +34,9 @@ class SentimentPredictor:
         self.model = self.model_architecture()
         self.model.fit(X_train, y_train,
                        batch_size = BATCH_SIZE, 
-                       epochs = TRAINING_EPOCHS, verbose = 1)    
+                       epochs = TRAINING_EPOCHS,
+                       shuffle=True,
+                       verbose = 1)    
 
 
     def predict(self, X_data):
