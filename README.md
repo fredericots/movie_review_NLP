@@ -5,7 +5,7 @@ just its text (only english is supported).
 
 ## How to install
 
-pip install requirements.txt  
+pip install -r requirements.txt  
 python setup.py
 
 ## How to use
